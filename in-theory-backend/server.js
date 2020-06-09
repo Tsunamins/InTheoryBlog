@@ -11,6 +11,7 @@ const posts = require("./routes/api/v1/posts");
 
 
 
+
 const uri = require("./config/keys").mongoURI;
 mongoose.connect(uri,
     { useNewUrlParser: true, useUnifiedTopology: true }
@@ -24,7 +25,8 @@ mongoose.connect(uri,
   require("./config/passport")(passport);
   // Routes
   app.use("/api/v1/users", users);
-  app.use("/api/v1/posts", posts)
+  app.use("/api/v1/posts", posts);
+ 
 
 
 
