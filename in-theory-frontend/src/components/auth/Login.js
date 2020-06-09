@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { login } from '../actions/authActions.js'
+import {connect} from 'react-redux'
+import { login } from '../../actions/authActions.js'
 
 class Login extends Component {
  state = {
       email: "",
       password: "",
-      errors: {}
+   
   
   }
 handleChange = e => {
@@ -34,23 +35,25 @@ render() {
             
             <div>
                 <form noValidate onSubmit={this.onSubmit}>
+
+                <label htmlFor="email">Email</label>   
                 <input
                   onChange={this.onChange}
                   value={this.state.email}
-                  error={errors.email}
+                    placeholder="Email"
                   id="email"
                   type="email"
                 />
-                <label htmlFor="email">Email</label>
-             
+                
+                <label htmlFor="password">Password</label>
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
-                  error={errors.password}
+                    placeholder="Password"
                   id="password"
                   type="password"
                 />
-                <label htmlFor="password">Password</label>
+                
              
               <div>
                 <button type="submit">Login</button>
