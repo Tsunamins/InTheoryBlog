@@ -41,11 +41,11 @@ render() {
                  <div><p>Don't have an account? <Link to="/register">Register</Link></p></div>
             
             <div>
-                <form noValidate onSubmit={this.onSubmit}>
+                <form noValidate onSubmit={this.handleSubmit}>
 
                 <label htmlFor="email">Email</label>   
                 <input
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   value={this.state.email}
                     placeholder="Email"
                   id="email"
@@ -54,7 +54,7 @@ render() {
                 
                 <label htmlFor="password">Password</label>
                 <input
-                  onChange={this.onChange}
+                  onChange={this.handleChange}
                   value={this.state.password}
                     placeholder="Password"
                   id="password"
