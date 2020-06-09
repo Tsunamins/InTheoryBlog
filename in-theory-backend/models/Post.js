@@ -1,4 +1,4 @@
-const User = require('./user.js');
+const User = require('./User.js');
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema

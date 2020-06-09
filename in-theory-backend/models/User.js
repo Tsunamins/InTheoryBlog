@@ -1,4 +1,4 @@
-const Post = require('./post.js');
+const Post = require('./Post.js');
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
