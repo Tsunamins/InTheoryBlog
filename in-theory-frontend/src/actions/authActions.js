@@ -11,7 +11,8 @@ export const signup = (userData, history) => dispatch => {
         },
         body: JSON.stringify(userData)
     })
-    .then(resp => console.log(resp))
+    .then(resp => console.log(resp.json()))
+    .then(resp => history.push("/login"))
     // .then(response => {
     //   if (response.error) {
     //     alert(response.error)
@@ -28,7 +29,7 @@ export const signup = (userData, history) => dispatch => {
 
 export const login = (userData, history) => dispatch => {
     
-    return fetch("/api/v1/users/login", {
+    return fetch("http://localhost:5000/api/v1/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,20 +37,72 @@ export const login = (userData, history) => dispatch => {
         },
         body: JSON.stringify(userData)
     })
-    .then(resp => console.log(resp))
-    // .then(response => {
-    //   if (response.error) {
-    //     alert(response.error)
-    //   } else {
-    //     console.log(response)
-        //     console.log(response.user.data)
-        //     console.log(response.jwt)
-        // dispatch(loginUser(response.user.data))
-        // localStorage.setItem('token', response.jwt)
-    //   }
-    // })
-    // .catch(console.log)
+    .then(resp => resp.json())
+     .then(response => {
+       if (response.error) {
+         alert(response.error)
+       } else {
+         console.log(response.token) //response is token: bearer, not sure if I have to remove bearer via string or remove bearer from backend
+         const token = response.token
+         localStorage.setItem('token', response.token)
+         const decoded = jwt_decode(token);
+         console.log(decoded)
+         dispatch(loginUser(decoded))
+         dispatch(getUser(decoded))
+       
+       }
+     })
+     .catch(console.log)
 }
+
+//just get user by id for now:
+export const getUser = (user_id) => {
+  console.log(user_id.id)
+      
+    //return dispatch (built in) as an argument, a thunk function 
+    return dispatch => {
+
+     return fetch(`http://localhost:5000/api/v1/users/${user_id.id}`)
+      .then(resp => resp.json())
+      .then(response => {
+          console.log(response)
+          dispatch(loadUser(response))
+            
+       })
+    }
+}
+
+
+
+//use later with protected routes from backend
+// export const authorizeUser = () => {
+//     //new
+//     return dispatch => {
+//     const token = localStorage.getItem("token")
+//     if (token) {
+    
+//       return fetch("http://localhost:5000/api/v1/users/login", {
+     
+//         headers: {
+      
+//           "Authorization": token
+//         },
+//       })
+//         .then(resp => resp.json())
+        
+//     //     .then(response => {
+//     //       if (response.error) {
+//     //         alert(response.error)
+//     //       } else {
+//     //         dispatch(loginUser(response.user.data))
+            
+//     //       }
+//     //     })
+//     //     .catch(console.log)
+//          }
+//      }
+
+// }
 
 
 
@@ -68,12 +121,21 @@ export const logout = () => dispatch => {
 
 
 //action creators
-export const loginUser = user => {    
+export const loginUser = decoded => {
+    console.log(decoded)    
     return {
-        type: "SET_CURRENT_USER",
-        user 
+        type: "LOGIN_USER",
+        decoded 
     }
     
+}
+
+export const loadUser = user => {
+    console.log(user)
+    return {
+        type: "LOAD_CURRENT_USER",
+        user
+    }
 }
 
 
