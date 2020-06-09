@@ -1,11 +1,15 @@
 const express = require("express");
+const app = express();
+app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 const mongoose = require("mongoose");
 const passport = require("passport");
 const users = require("./routes/api/v1/users");
 const posts = require("./routes/api/v1/posts");
 
-const app = express();
-app.use(express.json());
+
+
 
 const uri = require("./config/keys").mongoURI;
 mongoose.connect(uri,
