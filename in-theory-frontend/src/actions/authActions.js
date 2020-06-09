@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 
 export const signup = (userData, history) => dispatch => {
    
-    return fetch("/api/v1/users/signup", {
+    return fetch("http://localhost:5000/api/v1/users/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
