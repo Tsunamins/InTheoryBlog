@@ -28,7 +28,15 @@ handleSubmit = e => {
         };
 
     this.props.signup(newUser, this.props.history)
-    console.log(newUser);
+    this.setState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: ""
+        
+  })
+
+    
   };
 
 

@@ -21,6 +21,13 @@ handleSubmit = e => {
       password: this.state.password
     };
     this.props.login(userData, this.props.history)
+    this.setState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: ""
+        
+  })
   };
 
 
