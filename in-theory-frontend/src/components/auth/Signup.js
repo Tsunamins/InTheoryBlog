@@ -21,18 +21,18 @@ handleChange = e => {
 handleSubmit = e => {
     e.preventDefault();
     const newUser = {
-        username: this.state.name,
+        username: this.state.username,
         email: this.state.email,
         password: this.state.password,
         password2: this.state.password2
         };
-
+        console.log(newUser)
     this.props.signup(newUser, this.props.history)
     this.setState({
-        first_name: "",
-        last_name: "",
+        username: "",
         email: "",
-        password: ""
+        password: "",
+        password2: ""
         
   })
 
@@ -52,12 +52,12 @@ handleSubmit = e => {
              <div>   
        
                 <form noValidate onSubmit={this.handleSubmit}>
-                <label htmlFor="name">Username</label>
+                <label htmlFor="username">Username</label>
                 <input
                   onChange={this.handleChange}
                   value={this.state.username}
                     placeholder="Username"
-                  id="name"
+                  id="username"
                   type="text"
                 />
                 
