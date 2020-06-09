@@ -1,3 +1,4 @@
+const User = require('./user.js');
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
@@ -10,11 +11,15 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  topic: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now
   },
-  owner: {
+  author: {
       type: Schema.Types.ObjectId,
       ref: "User"
   }
