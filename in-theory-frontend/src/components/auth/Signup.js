@@ -45,8 +45,8 @@ handleSubmit = e => {
    
         return (
             <div>
-                <div><Link to="/">something here </Link> </div>
-                <div><h4>Register</h4></div>
+                <div><Link to="/">Home</Link> </div>
+                <div><h4>Sign Up</h4></div>
                 <div>Already have an account? <Link to="/login">Log in</Link></div>
              
              <div>   
