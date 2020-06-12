@@ -1,5 +1,5 @@
 export const createPost = (postData, history) => dispatch => {
-   
+   console.log(postData)
     return fetch("http://localhost:5000/api/v1/posts/new", {
         method: "POST",
         headers: {
@@ -10,12 +10,15 @@ export const createPost = (postData, history) => dispatch => {
     })
     .then(resp => resp.json())
     
+   
+    
     // .then(resp => history.push("/:id"))
     .then(response => {
         if(response.error){
           alert(response.error)
         } else {
-          dispatch(addPost(response))
+            console.log(response)
+          dispatch(addPost(response.data))
         }
       })
       .catch(console.log)
@@ -30,7 +33,7 @@ export const getPosts = () => dispatch => {
             if(response.error){
                 alert(response.error)
             } else {
-       
+                console.log(response)
               dispatch(getAllPosts(response))
             }
             })
