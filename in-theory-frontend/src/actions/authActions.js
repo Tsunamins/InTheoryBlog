@@ -35,7 +35,7 @@ export const login = (userData, history) => dispatch => {
          const token = response.token
          localStorage.setItem('token', response.token)
          const decoded = jwt_decode(token);
-         console.log(decoded)
+       
          dispatch(loginUser(decoded))
          dispatch(getUser(decoded))
        
@@ -55,7 +55,7 @@ export const getUser = (user_id) => {
      return fetch(`http://localhost:5000/api/v1/users/${user_id.id}`)
       .then(resp => resp.json())
       .then(response => {
-          console.log(response)
+        
           dispatch(loadUser(response))
             
        })
@@ -112,7 +112,7 @@ export const logout = () => dispatch => {
 
 //action creators
 export const loginUser = decoded => {
-    console.log(decoded)    
+    
     return {
         type: "LOGIN_USER",
         decoded 
@@ -121,7 +121,7 @@ export const loginUser = decoded => {
 }
 
 export const loadUser = user => {
-    console.log(user)
+
     return {
         type: "LOAD_CURRENT_USER",
         user
