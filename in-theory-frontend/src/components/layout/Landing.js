@@ -10,7 +10,7 @@ const Landing = () => (
             <Link to="/">Home</Link>
           </div>
             <div>
-              <Link to="/register">Register</Link>
+              <Link to="/signup">Sign Up</Link>
             </div>
             <div>
               <Link to="/login">Log In</Link>
