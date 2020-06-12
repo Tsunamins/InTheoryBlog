@@ -2,7 +2,7 @@ export default function post(state = [], action) {
    
     switch (action.type) {
       case 'GET_POSTS':  
-        return action.post
+        return action.posts
       case 'ADD_POST':
          
         return state.concat(action.post)
