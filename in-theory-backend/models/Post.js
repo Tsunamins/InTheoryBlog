@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    trim: true,
   },
   content: {
     type: String,
@@ -22,6 +23,11 @@ const PostSchema = new Schema({
   author: {
       type: Schema.Types.ObjectId,
       ref: "User"
-  }
+  },
+
+ }, {timestamps: true,
+
 });
+
+
 module.exports = Post = mongoose.model("posts", PostSchema);
