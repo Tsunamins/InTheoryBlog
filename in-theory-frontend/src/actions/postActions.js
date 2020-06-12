@@ -41,6 +41,24 @@ export const getPosts = () => dispatch => {
           
   }
 
+  export const viewPost = (post_id) => dispatch => {  
+    
+    return fetch(`http://localhost:5000/api/v1/posts/${post_id}`)
+     .then(resp => resp.json())
+     .then(response => {
+         if(response.error){
+             alert(response.error)
+         } else {
+             console.log(response)
+          
+         }
+         })
+         .catch(console.log)
+       
+}
+
+
+
 
 
 
