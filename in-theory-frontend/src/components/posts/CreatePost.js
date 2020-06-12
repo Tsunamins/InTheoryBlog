@@ -10,7 +10,7 @@ class CreatePost extends Component {
       title: "",
       content: "",
       topic: "",
-      author: "will set based on current user"
+      author: ""
    
   }
 
@@ -24,6 +24,7 @@ handleSubmit = e => {
         title: this.state.title,
         content: this.state.content,
         topic: this.state.topic,
+        author: this.props.currentUser[0]._id
       
         };
         console.log(newPost)
@@ -31,7 +32,8 @@ handleSubmit = e => {
     this.setState({
         title: "",
         content: "",
-        topic: ""
+        topic: "",
+        author: ""
         
   })
 
@@ -41,7 +43,7 @@ handleSubmit = e => {
 
   render() {
 
-   
+        console.log(typeof this.props.currentUser[0]._id)
         return (
             <div>
                 <div><Link to="/">Home</Link> </div>
@@ -91,4 +93,14 @@ handleSubmit = e => {
 
 }
 
-export default connect(null, {createPost}) (CreatePost);
+const mapStateToProps = state => {
+    console.log(state)
+    return ({
+      
+      currentUser: state.authReducer.user,
+      allPosts: state.postReducer
+     
+    })
+  }
+
+export default connect(mapStateToProps, {createPost}) (CreatePost);
