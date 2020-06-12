@@ -7,7 +7,7 @@ const keys = require("../../../config/keys");
 // Load User model
 const Post = require("../../../models/Post");
 
-router.route('/allposts').get((req, res) => {
+router.route('/').get((req, res) => {
     Post.find()
         .then(posts => res.json(posts))
         .catch(err => res.status(400).json('Error: ' + err));
@@ -35,18 +35,20 @@ router.route('/new').post((req, res) => {
     const title = req.body.title;
     const content = req.body.content;
     const topic = req.body.topic;
-    const date = Date.parse(req.body.date);
-    const author = Number(req.body.author)
+  
+    const author = req.body.author
     const newPost = new Post({
         title,
         content,
         topic,
-        date,
         author,
     });
 
     newPost.save()
-    .then(() => res.json('Post added!'))
+    .then(() => res.json({
+      message: 'Post added!',
+      data: newPost
+    }))
     .catch(err => res.status(400).json('Error: ' + err));
 })
 
