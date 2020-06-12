@@ -3,7 +3,7 @@
     isAuthenticated: false,
     user_id: {},
     loading: false,
-    user: {}
+    user: []
   };
   export default function(state = initialState, action) {
     console.log(action)
@@ -24,7 +24,7 @@
             return {
                 ...state,
                 loading: true,
-                user: action.user
+                user: [action.user]
             };
       default:
         return state;
