@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import { signup } from '../../actions/authActions.js'
+import { createPost } from '../../actions/postActions.js'
 
 
 class CreatePost extends Component {
@@ -27,7 +27,7 @@ handleSubmit = e => {
       
         };
         console.log(newPost)
-    this.props.signup(newPost, this.props.history)
+    this.props.createPost(newPost, this.props.history)
     this.setState({
         title: "",
         content: "",
@@ -57,16 +57,6 @@ handleSubmit = e => {
                   id="title"
                   type="text"
                 />
-                
-                <label htmlFor="content">Add the content of the blog:</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.content}
-                  placeholder="Content"
-                  id="content"
-                  type="text"
-                />
-                
                 <label htmlFor="topic">Topic</label>
                 <input
                   onChange={this.handleChange}
@@ -75,6 +65,17 @@ handleSubmit = e => {
                   id="topic"
                   type="text"
                 />
+                
+                <label htmlFor="content">Add the content of the blog:</label>
+                <input
+                  onChange={this.handleChange}
+                  value={this.state.content}
+                  placeholder="Content"
+                  id="content"
+                  type="textarea"
+                />
+                
+                
                 
                           
              
@@ -90,4 +91,4 @@ handleSubmit = e => {
 
 }
 
-export default CreatePost
+export default connect(null, {createPost}) (CreatePost);
