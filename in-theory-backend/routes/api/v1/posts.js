@@ -37,7 +37,7 @@ router.route('/new').post((req, res) => {
     const topic = req.body.topic;
     const date = Date.parse(req.body.date);
     const author = Number(req.body.author)
-    const newPost = new Exercise({
+    const newPost = new Post({
         title,
         content,
         topic,
@@ -47,7 +47,7 @@ router.route('/new').post((req, res) => {
 
     newPost.save()
     .then(() => res.json('Post added!'))
-    .catch(err => res.status(400).jsosn('Error: ' + err));
+    .catch(err => res.status(400).json('Error: ' + err));
 })
 
 
