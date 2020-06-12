@@ -13,18 +13,7 @@ export const signup = (userData, history) => dispatch => {
     })
     .then(resp => console.log(resp.json()))
     .then(resp => history.push("/login"))
-    // .then(response => {
-    //   if (response.error) {
-    //     alert(response.error)
-    //   } else {
-    //     console.log(response)
-    //     //     console.log(response.user.data)
-    //     //     console.log(response.jwt)
-    //     // dispatch(loginUser(response.user.data))
-    //     // localStorage.setItem('token', response.jwt)
-    //   }
-    // })
-    // .catch(console.log)
+  
 }
 
 export const login = (userData, history) => dispatch => {
@@ -56,6 +45,7 @@ export const login = (userData, history) => dispatch => {
 }
 
 //just get user by id for now:
+//change to authorization header later to continuously to protect routes and validate token
 export const getUser = (user_id) => {
   console.log(user_id.id)
       
