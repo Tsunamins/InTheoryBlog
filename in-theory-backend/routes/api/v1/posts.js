@@ -83,7 +83,7 @@ router.route('/:id').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
   
-  router.route('/update/:id').post((req, res) => {
+  router.route('/update/:id').patch((req, res) => {
     Post.findById(req.params.id)
       .then(post => {
         post.title = req.body.title;
