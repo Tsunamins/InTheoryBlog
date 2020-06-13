@@ -7,9 +7,9 @@ export default function post(state = [], action) {
          
         return state.concat(action.post)
       case 'DELETE_POST':
-        return  state.filter(post => post.id === action.post ? false : true)
+        return  state.filter(post => post._id === action.post ? false : true)
       case 'UPDATE_POST':
-        return state.map(post => post.id === action.post.id ? action.post : post)
+        return state.map(post => post._id === action.post._id ? action.post : post)
         
         default:
             return state

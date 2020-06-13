@@ -25,6 +25,38 @@ export const createPost = (postData, history) => dispatch => {
   
 }
 
+export const editPost = (postData, post_id) => dispatch => {
+    console.log(postData)
+     return fetch(`http://localhost:5000/api/v1/posts/update/${post_id}`, {
+         method: "PATCH",
+         headers: {
+             "Content-Type": "application/json",
+             "Accept": 'application/json'
+         },
+         body: JSON.stringify(postData)
+     })
+     .then(resp => resp.json())
+     
+    
+     
+     // .then(resp => history.push("/:id"))
+     .then(response => {
+         if(response.error){
+           alert(response.error)
+         } else {
+             console.log(response)
+            
+           dispatch(updatePost(response))
+         }
+       })
+       .catch(console.log)
+   
+ }
+
+
+
+
+
 export const getPosts = () => dispatch => {  
     
        return fetch('http://localhost:5000/api/v1/posts')
@@ -89,4 +121,13 @@ export const addPost = post => {
     }
   }
 
+
+  export const updatePost = post => {
+
+    console.log(post)
+    return {
+      type: "UPDATE_POST",
+      post
+    }
+  }  
 
