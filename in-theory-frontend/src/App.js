@@ -12,6 +12,10 @@ import {getUsers} from './actions/userActions'
 import AllPosts from './components/posts/AllPosts';
 import ViewPost from './components/posts/ViewPost';
 import EditPost from './components/posts/EditPost';
+import AllUsers from './components/posts/AllUsers'
+import UserDetails from './components/posts/UserDetails'
+
+
 
 // import EditPost from './components/posts/EditPost';
 // import DeletePost from './components/posts/DeletePost';
@@ -36,13 +40,23 @@ class App extends React.Component {
     const currentUser= this.props.currentUser
   
     const posts = this.props.allPosts
+    const users = this.props.allUsers
     return (
-      <div className="App">
+      <div className="App container">
         <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        {/* <Route exact path="/posts" component={AllPosts} /> */}
+        <Route exact path="/users" component={AllUsers} />
+        <Route exact path="/users/:id" render={props => {
+             
+             const user = users.find(element => element._id.toString() === props.match.params.id)
+         
+           
+             return <UserDetails user={user} {...props}/>
+           }
+         }/>
+      
         <Route exact path='/posts/:id' render={props => {
              
               const post = posts.find(element => element._id.toString() === props.match.params.id)
