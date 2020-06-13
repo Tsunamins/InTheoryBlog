@@ -17,7 +17,7 @@ export const createPost = (postData, history) => dispatch => {
         if(response.error){
           alert(response.error)
         } else {
-            console.log(response)
+           
           dispatch(addPost(response.data))
         }
       })
@@ -33,14 +33,16 @@ export const getPosts = () => dispatch => {
             if(response.error){
                 alert(response.error)
             } else {
-                console.log(response)
-              dispatch(getAllPosts(response))
+            
+              dispatch(getAllPosts(response.data))
             }
             })
             .catch(console.log)
           
   }
 
+
+  //don't technically use this as of now, unless to create a 'loaded post'
   export const viewPost = (post_id) => dispatch => {  
     
     return fetch(`http://localhost:5000/api/v1/posts/${post_id}`)
@@ -86,4 +88,5 @@ export const addPost = post => {
         posts 
     }
   }
+
 

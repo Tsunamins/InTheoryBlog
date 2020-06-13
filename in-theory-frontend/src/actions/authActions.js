@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 
 export const signup = (userData, history) => dispatch => {
    
-    return fetch("http://localhost:5000/api/v1/users/signup", {
+    return fetch("http://localhost:5000/api/v1/auths/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export const signup = (userData, history) => dispatch => {
 
 export const login = (userData, history) => dispatch => {
     
-    return fetch("http://localhost:5000/api/v1/users/login", {
+    return fetch("http://localhost:5000/api/v1/auths/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -52,10 +52,10 @@ export const getUser = (user_id) => {
     //return dispatch (built in) as an argument, a thunk function 
     return dispatch => {
 
-     return fetch(`http://localhost:5000/api/v1/users/${user_id.id}`)
+     return fetch(`http://localhost:5000/api/v1/auths/${user_id.id}`)
       .then(resp => resp.json())
       .then(response => {
-        
+       
           dispatch(loadUser(response))
             
        })

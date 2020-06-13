@@ -24,7 +24,7 @@ handleSubmit = e => {
         title: this.state.title,
         content: this.state.content,
         topic: this.state.topic,
-        author: this.props.currentUser[0]._id
+        author: this.props.currentUser[0]
       
         };
         console.log(newPost)
@@ -36,6 +36,7 @@ handleSubmit = e => {
         author: ""
         
   })
+    console.log(this.props)
 
     
   };
