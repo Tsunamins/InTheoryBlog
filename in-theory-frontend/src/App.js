@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import CreatePost from "./components/posts/CreatePost"
 import {loadUser} from './actions/authActions';
 import {getPosts} from './actions/postActions'
+import {getUsers} from './actions/userActions'
 import AllPosts from './components/posts/AllPosts';
 import ViewPost from './components/posts/ViewPost';
 
@@ -23,18 +24,35 @@ class App extends React.Component {
 
   componentDidMount(){
     this.props.getPosts();
+    this.props.getUsers();
+
   }
 
+
+
   render(){
-    console.log(this.props)
+   console.log(this.props)
     const currentUser= this.props.currentUser
-    console.log(currentUser)
+  
+    const posts = this.props.allPosts
     return (
       <div className="App">
+        <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/posts/:id" component={ViewPost} />
+        {/* <Route exact path="/posts" component={AllPosts} /> */}
+        <Route exact path='/posts/:id' render={props => {
+             
+              const post = posts.find(element => element._id.toString() === props.match.params.id)
+          
+            
+              return <ViewPost post={post} {...props}/>
+            }
+          }/>
+        </Switch>
+
+
         {/* <Route exact path="/posts/:id/edit" component={EditPost} />
         <Route exact path="/posts/:id/delete" component={DeletePost} /> */}
         { currentUser.length > 0 ? 
@@ -43,7 +61,9 @@ class App extends React.Component {
                 <Route exact path="/new" component={CreatePost} />
             </div> 
           : null }
+        
         <div>
+        <hr></hr>
           <AllPosts posts={this.props.allPosts} />
         </div>
       </div>
@@ -51,14 +71,17 @@ class App extends React.Component {
   }
 }
 
+
+
 const mapStateToProps = state => {
-  console.log(state)
+
   return ({
     
     currentUser: state.authReducer.user,
-    allPosts: state.postReducer
+    allPosts: state.postReducer,
+    allUsers: state.userReducer
    
   })
 }
 
-export default connect(mapStateToProps, {loadUser, getPosts})(App);
+export default connect(mapStateToProps, {loadUser, getPosts, getUsers})(App);
