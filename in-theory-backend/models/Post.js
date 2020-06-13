@@ -1,6 +1,10 @@
+
+
 const User = require('./User.js');
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
+// import { model, Schema } from 'mongoose';
+ //import User from './User.js'
 // Create Schema
 const PostSchema = new Schema({
   title: {
@@ -18,13 +22,14 @@ const PostSchema = new Schema({
   },
  
   author: {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-  },
+    type: Schema.Types.ObjectId,
+    ref: 'users' //changing this to users, populated author, w .populate('author')
+},
 
  }, {timestamps: true,
 
 });
 
+//export default model('Post', PostSchema)
 
-module.exports = Post = mongoose.model("posts", PostSchema);
+module.exports = Post = mongoose.model("Post", PostSchema);
