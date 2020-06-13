@@ -11,7 +11,7 @@ const AllPosts = (props) => {
      
   return(
       <div>
-     
+          <Link to="/">Home</Link>
         <hr></hr>
         <div>
             {posts}
@@ -20,11 +20,6 @@ const AllPosts = (props) => {
       
     );
   }
-  const mapStateToProps = state => {
-    return({
-        allPosts: state.postsReducer
-    })
-}
-
+  
 
 export default AllPosts
