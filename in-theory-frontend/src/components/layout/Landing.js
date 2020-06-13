@@ -15,6 +15,9 @@ const Landing = () => (
             <div>
               <Link to="/login">Log In</Link>
             </div>
+            <div>
+              <Link to="/users">All Users</Link>
+            </div>
           </div>
       
     );
