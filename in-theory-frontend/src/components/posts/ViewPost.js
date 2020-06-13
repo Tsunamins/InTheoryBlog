@@ -27,7 +27,8 @@ class ViewPost extends React.Component {
             <div>{moment(post.createdAt).format("dddd, MMMM Do YYYY")}</div>
             <div>{post.topic}</div>
             <div>{post.content}</div>
-
+            <Link to={`/posts/${post._id}/edit`}>Edit this post</Link>
+        
         </div>
 
         }
