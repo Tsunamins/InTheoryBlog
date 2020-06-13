@@ -1,17 +1,6 @@
-const express = require("express");
-const app = express();
-app.use(express.json());
-const cors = require('cors');
-app.use(cors());
+
+//mongoose and db connection block
 const mongoose = require("mongoose");
-const passport = require("passport");
-const users = require("./routes/api/v1/users");
-const posts = require("./routes/api/v1/posts");
-
-
-
-
-
 const uri = require("./config/keys").mongoURI;
 mongoose.connect(uri,
     { useNewUrlParser: true, useUnifiedTopology: true }
@@ -19,11 +8,33 @@ mongoose.connect(uri,
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
-  // Passport middleware
-  app.use(passport.initialize());
+//models, before routes
+const User = require('./models/User')
+const Post = require('./models/Post')
+
+
+//express
+const express = require("express");
+const app = express();
+const cors = require('cors');
+const passport = require("passport");
+
+
+app.use(express.json());
+app.use(cors());
+// Passport middleware
+app.use(passport.initialize());
   // Passport config
-  require("./config/passport")(passport);
+require("./config/passport")(passport);
+
+  
+
+
   // Routes
+  const auths = require("./routes/api/v1/auths")
+  const users = require("./routes/api/v1/users");
+  const posts = require("./routes/api/v1/posts");
+  app.use("/api/v1/auths", auths)
   app.use("/api/v1/users", users);
   app.use("/api/v1/posts", posts);
  
