@@ -2,18 +2,29 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 
-function AllPosts(props){
- console.log(this.props)
+const AllPosts = (props) => {
+ 
+
+ const postLinks = props.posts.map(p => 
+    <div key={p._id}>
+        <Link to={`/posts/${p._id}`}>{p.title}</Link></div>
+    )
   return(
       <div>
+     
+        <hr></hr>
         <div>
-            <Link to="/">Home</Link>
-          </div>
-            <div>
-              <Link to="/posts/:id">A link to a post</Link>
-            </div>
+            {postLinks}
+        </div>
       </div>
       
     );
   }
-export default AllPosts;
+  const mapStateToProps = state => {
+    return({
+        allPosts: state.postsReducer
+    })
+}
+
+
+export default AllPosts
