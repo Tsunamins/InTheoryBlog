@@ -11,6 +11,7 @@ import {getPosts} from './actions/postActions'
 import {getUsers} from './actions/userActions'
 import AllPosts from './components/posts/AllPosts';
 import ViewPost from './components/posts/ViewPost';
+import EditPost from './components/posts/EditPost';
 
 // import EditPost from './components/posts/EditPost';
 // import DeletePost from './components/posts/DeletePost';
@@ -50,6 +51,14 @@ class App extends React.Component {
               return <ViewPost post={post} {...props}/>
             }
           }/>
+          <Route exact path='/posts/:id/edit' render={props => {
+             
+             const post = posts.find(element => element._id.toString() === props.match.params.id)
+         
+           
+             return <EditPost post={post} {...props}/>
+           }
+         }/>
         </Switch>
 
 
