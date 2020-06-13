@@ -53,6 +53,38 @@ export const editPost = (postData, post_id) => dispatch => {
    
  }
 
+ export const deletePost = (post_id) => {
+
+    // const token = localStorage.getItem("token")
+    // if(token){
+       return dispatch => {
+      
+        return fetch(`http://localhost:5000/api/v1/posts/${post_id}`, {
+      
+        method: "DELETE",
+        // headers: {
+        //   "Authorization": token
+        // }
+      })
+        .then(resp => {
+          if (resp.error){
+            alert(resp.error)
+          }else {
+       
+             dispatch(destroyPost(post_id))
+             alert("Post deleted")
+        
+     
+        
+      }
+    })
+        .catch(error => console.log(error))
+  
+    }
+  }
+  
+
+
 
 
 
@@ -130,4 +162,12 @@ export const addPost = post => {
       post
     }
   }  
+
+  export const destroyPost = post => {
+
+    return {
+      type: "DELETE_POST",
+      post
+    }
+  }
 
