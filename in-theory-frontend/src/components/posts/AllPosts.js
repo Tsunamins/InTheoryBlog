@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 
 const AllPosts = (props) => {
- 
 
- const postLinks = props.posts.map(p => 
+     const posts = props.posts.map(p => 
     <div key={p._id}>
         <Link to={`/posts/${p._id}`}>{p.title}</Link></div>
     )
+     
   return(
       <div>
      
         <hr></hr>
         <div>
-            {postLinks}
+            {posts}
         </div>
       </div>
       
