@@ -50,7 +50,8 @@ export const getUsers = () => dispatch => {
  //action creators
  
  
-   export const getAllUsers = users => {    
+   export const getAllUsers = users => {  
+       console.log(users)  
      return {
          type: "GET_USERS",
          users 

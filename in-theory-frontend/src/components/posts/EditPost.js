@@ -37,7 +37,7 @@ handleSubmit = e => {
       
         
   })
-  this.props.history.push(`/posts/${this.props.post._id}`)
+  this.props.history.push(`/posts/${this.props.post_id}`)
     console.log(this.props)
 
     
