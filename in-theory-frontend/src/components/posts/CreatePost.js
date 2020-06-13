@@ -36,6 +36,7 @@ handleSubmit = e => {
         author: ""
         
   })
+  this.props.history.push(`/posts/${this.props.post._id}`)
     console.log(this.props)
 
     
