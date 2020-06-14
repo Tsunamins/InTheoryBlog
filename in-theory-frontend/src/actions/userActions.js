@@ -6,7 +6,6 @@ export const getUsers = () => dispatch => {
              if(response.error){
                  alert(response.error)
              } else {
-                console.log(response.data)
                 dispatch(getAllUsers(response.data))
              
              }
@@ -51,7 +50,7 @@ export const getUsers = () => dispatch => {
  
  
    export const getAllUsers = users => {  
-       console.log(users)  
+       
      return {
          type: "GET_USERS",
          users 
