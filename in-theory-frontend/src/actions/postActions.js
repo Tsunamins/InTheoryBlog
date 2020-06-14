@@ -12,13 +12,15 @@ export const createPost = (postData, history) => dispatch => {
     
    
     
-    // .then(resp => history.push("/:id"))
+    
     .then(response => {
         if(response.error){
           alert(response.error)
         } else {
-           
+          console.log(response.data)
+          history.push(`/posts/${response.data._id}`)
           dispatch(addPost(response.data))
+
         }
       })
       .catch(console.log)

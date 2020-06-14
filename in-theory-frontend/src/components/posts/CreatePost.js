@@ -36,16 +36,15 @@ handleSubmit = e => {
         author: ""
         
   })
-  this.props.history.push(`/posts/${this.props.post._id}`)
-    console.log(this.props)
+  // this.props.history.push(`/posts/${this.props.post._id}`)
+ 
 
     
   };
 
 
   render() {
-
-        console.log(typeof this.props.currentUser[0]._id)
+       
         return (
             <div className="shadow-sm p-3 mb-5 bg-white rounded">
                 
