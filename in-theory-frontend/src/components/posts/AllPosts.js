@@ -23,16 +23,23 @@ const AllPosts = (props) => {
 
 
      const postsList = posts.map(p => 
-    <div key={p._id}>
-        <Link to={`/posts/${p._id}`}>{p.title}</Link></div>
-    )
+      <div className="card" key={p._id}>
+          <div className="card-body">
+            <h5 className="card-title">{p.title}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{p.topic}</h6>
+            <div className="btn btn-info"><Link to={`/posts/${p._id}`}>Read More</Link></div>
+          </div>
+        </div>
+     )
      
   return(
       <div className="shadow-sm p-3 mb-5 bg-white rounded">
-        <h3>{heading}</h3>
-        <div>
-            {postsList}
-        </div>
+        
+            <h3>{heading}</h3>
+            <div>
+                {postsList}
+           
+            </div>
       </div>
       
     );

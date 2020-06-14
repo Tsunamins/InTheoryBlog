@@ -7,13 +7,17 @@ import {connect} from 'react-redux'
 
 function AllUsers(props) {
 
- console.log(props)
- const userLinks = props.allUsers.map(u => 
-    <li key={u._id}>
-      <Link to={`/users/${u._id}`}>{u.username}</Link>
-    </li>
 
-  )
+
+  const userLinks = props.allUsers.map(u => 
+    <div className="card" key={u._id}>
+        <div className="card-body">
+          <h5 className="card-title">{u.username}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">Number of Posts: {u.posts.length}</h6>
+          <div className="btn btn-info"><Link to={`/users/${u._id}`}>View User</Link></div>
+        </div>
+      </div>
+   )
 
  
       return(
