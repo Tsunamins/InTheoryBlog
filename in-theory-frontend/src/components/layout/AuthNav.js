@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AuthNav = () => (
  
-        <div className="col" >
+        <div className="float-right" id="auth-positions">
             <li className="list-inline-item btn btn-outline-info">
               <Link to="/signup">Sign Up</Link>
             </li>

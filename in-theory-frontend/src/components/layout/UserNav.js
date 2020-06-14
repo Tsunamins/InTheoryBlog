@@ -6,9 +6,9 @@ import Logout from '../auth/Logout'
 
 const UserNav = () => {
  
-
+    
   return(
-      <div className="col" >
+      <div className="float-right" id="auth-positions">
           
           <li className="list-inline-item btn btn-outline-info">
             <Link to="/new">Create a new Post</Link>
