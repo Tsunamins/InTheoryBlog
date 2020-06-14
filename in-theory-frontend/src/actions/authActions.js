@@ -31,7 +31,7 @@ export const login = (userData, history) => dispatch => {
        if (response.error) {
          alert(response.error)
        } else {
-         console.log(response.token) //response is token: bearer, not sure if I have to remove bearer via string or remove bearer from backend
+       //response is token: bearer, not sure if I have to remove bearer via string or remove bearer from backend
          const token = response.token
          localStorage.setItem('token', response.token)
          const decoded = jwt_decode(token);
@@ -47,7 +47,7 @@ export const login = (userData, history) => dispatch => {
 //just get user by id for now:
 //change to authorization header later to continuously to protect routes and validate token
 export const getUser = (user_id) => {
-  console.log(user_id.id)
+
       
     //return dispatch (built in) as an argument, a thunk function 
     return dispatch => {
@@ -129,8 +129,23 @@ export const loadUser = user => {
 }
 
 
+
+
+
+//logout aspects
 export const logoutUser = () => {
     return {
       type: "LOGOUT_USER"
     }
   }
+
+//   export const logout = event => {
+//     localStorage.removeItem("token")
+//     console.log(localStorage.token)
+//     console.log("logged out")
+//     event.preventDefault()
+//     return dispatch => {
+//         dispatch(logoutUser())
+        
+//     }
+// }
