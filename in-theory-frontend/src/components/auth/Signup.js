@@ -45,53 +45,65 @@ handleSubmit = e => {
    
         return (
             <div>
-                <div><Link to="/">Home</Link> </div>
+
                 <div><h4>Sign Up</h4></div>
                 <div>Already have an account? <Link to="/login">Log in</Link></div>
              
              <div>   
-       
+                
                 <form noValidate onSubmit={this.handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.username}
-                    placeholder="Username"
-                  id="username"
-                  type="text"
-                />
+                  <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.username}
+                      placeholder="Username"
+                      id="username"
+                      type="text"
+                      className="form-control"
+                    />
+                  </div>
                 
-                <label htmlFor="email">Email</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.email}
-                  placeholder="Email"
-                  id="email"
-                  type="email"
-                />
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                      placeholder="Email"
+                      id="email"
+                      type="email"
+                      className="form-control"
+                    />
+                  </div>
                 
-                <label htmlFor="password">Password</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.password}
-                    placeholder="Password"
-                  id="password"
-                  type="password"
-                />
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.password}
+                      placeholder="Password"
+                      id="password"
+                      type="password"
+                      className="form-control"
+                    />
+                  </div>
                 
-                <label htmlFor="password2">Confirm Password</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.password2}
-                    placeholder="Confirm password"
-                  id="password2"
-                  type="password"
-                />
+                  <div className="form-group">
+                    <label htmlFor="password2">Confirm Password</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.password2}
+                      placeholder="Confirm password"
+                      id="password2"
+                      type="password"
+                      className="form-control"
+                    />
+                  </div>
                 
              
-              <div>
-                <button type="submit">Sign up</button>
-              </div>
+                  <div>
+                    <button type="submit" className="btn btn-info">Sign up</button>
+                  </div>
             </form>
           </div>
         </div>

@@ -53,45 +53,52 @@ handleSubmit = e => {
         } else {
         return (
           
-            <div>
-                <div><Link to="/">Home</Link> </div>
+            <div className="shadow-sm p-3 mb-5 bg-white rounded">
+              
                 <div><h4>Edit this Post</h4></div>
             <div>   
        
                 <form onSubmit={this.handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.title}
-                   placeholder={post.title}
-                  id="title"
-                  type="text"
-                />
-                <label htmlFor="topic">Topic</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.topic}
-                    placeholder={post.topic}
-                  id="topic"
-                  type="text"
-                />
-                
-                <label htmlFor="content">Add the content of the blog:</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.content}
-                  placeholder={post.content}
-                  id="content"
-                  type="textarea"
-                />
-                
-                
-                
-                          
-             
-              <div>
-                <button type="submit">Submit Changes</button>
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="title">Title</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.title}
+                      placeholder={post.title}
+                      id="title"
+                      type="text"
+                      className="form-control"
+                    />
+                    </div>
+
+                  <div className="form-group">
+                    <label htmlFor="topic">Topic</label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.topic}
+                      placeholder={post.topic}
+                      id="topic"
+                      type="text"
+                      className="form-control"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="content">Add the content of the blog:</label>
+                    <textarea
+                      onChange={this.handleChange}
+                      value={this.state.content}
+                      placeholder={post.content}
+                      id="content"
+                      // type="textarea"
+                      className="form-control"
+                      rows="10"
+                    />
+                  </div>
+        
+                  <div>
+                    <button type="submit" className="btn btn-info">Submit Changes</button>
+                  </div>
             </form>
           </div>
         </div>

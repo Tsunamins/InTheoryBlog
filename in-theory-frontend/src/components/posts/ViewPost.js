@@ -20,11 +20,8 @@ class ViewPost extends React.Component {
       
         console.log(post)
   return(
-      <div>
-        <div>
-            <Link to="/">Home</Link><br></br>
-            <Link to="/posts">All Posts</Link>
-        </div>
+      <div className="shadow-sm p-3 mb-5 bg-white rounded">
+       
 
         {post === null ? <div></div> :
         <div>
@@ -34,8 +31,15 @@ class ViewPost extends React.Component {
             <div>{moment(post.createdAt).format("dddd, MMMM Do YYYY")}</div>
             <div>{post.topic}</div>
             <div>{post.content}</div>
-            <Link to={`/posts/${post._id}/edit`}>Edit this post</Link>
-            <button onClick={this.handleDelete}>Delete Post</button>
+
+            <div className="row px-2" >
+              <div className="btn btn-info" id="edit-buttons">
+                <Link to={`/posts/${post._id}/edit`}>Edit this post</Link>
+              </div>
+              <div>
+                <button onClick={this.handleDelete} className="btn btn-info" id="edit-buttons">Delete Post</button>
+              </div>
+            </div>
         </div>
 
         }

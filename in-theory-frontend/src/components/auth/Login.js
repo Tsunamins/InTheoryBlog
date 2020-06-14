@@ -28,6 +28,7 @@ handleSubmit = e => {
         password: ""
         
   })
+    this.props.history.push('/myposts')
   };
 
 
@@ -36,35 +37,39 @@ render() {
         return (
             <div>
 
-                <div><Link to="/">Home</Link></div>
+              
                 <div><h4> Login</h4></div>
-                 <div><p>Don't have an account? <Link to="/register">Register</Link></p></div>
+                 <div><p>Don't have an account? <Link to="/signup">Sign Up</Link></p></div>
             
             <div>
                 <form noValidate onSubmit={this.handleSubmit}>
-
-                <label htmlFor="email">Email</label>   
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.email}
-                    placeholder="Email"
-                  id="email"
-                  type="email"
-                />
-                
-                <label htmlFor="password">Password</label>
-                <input
-                  onChange={this.handleChange}
-                  value={this.state.password}
-                    placeholder="Password"
-                  id="password"
-                  type="password"
-                />
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>   
+                    <input
+                        onChange={this.handleChange}
+                        value={this.state.email}
+                        placeholder="Email"
+                        id="email"
+                        type="email"
+                        className="form-control"
+                      />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        placeholder="Password"
+                        id="password"
+                        type="password"
+                        className="form-control"
+                    />
+                  </div>
                 
              
-              <div>
-                <button type="submit">Login</button>
-              </div>
+                  <div>
+                    <button type="submit" className="btn btn-info">Login</button>
+                  </div>
             </form>
           </div>
         </div>

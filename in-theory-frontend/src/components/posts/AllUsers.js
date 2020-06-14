@@ -17,7 +17,8 @@ function AllUsers(props) {
 
  
       return(
-        <div>
+        <div className="shadow-sm p-3 mb-5 bg-white rounded">
+          <h1>Authors on In Theory</h1>
          
             {userLinks}
          
