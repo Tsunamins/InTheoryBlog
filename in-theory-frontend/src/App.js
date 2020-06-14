@@ -17,7 +17,7 @@ import AllUsers from './components/posts/AllUsers'
 import UserDetails from './components/posts/UserDetails'
 import FeatureNav from './components/layout/FeatureNav';
 import UserNav from './components/layout/UserNav'
-import Logout from './components/auth/Logout'
+import Title from './components/layout/Title'
 
 
 
@@ -47,10 +47,15 @@ class App extends React.Component {
     const users = this.props.allUsers
     return (
       <div className="App container">
-      <div className="row shadow-lg p-3 mb-5 bg-white rounded">
+      <div className="shadow-lg p-3 mb-5 bg-white rounded">
+        
+      <div className="row">
           <LandingNav />
+          <Title />
+          
           { currentUser.length > 0 ? 
               <UserNav /> : <AuthNav />  }
+      </div>
       </div>
        
       <div>
