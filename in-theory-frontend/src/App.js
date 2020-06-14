@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import { Route, Switch, Link } from "react-router-dom";
-import Landing from "./components/layout/Landing";
+import AuthNav from "./components/layout/AuthNav"
+import LandingNav from "./components/layout/LandingNav";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import CreatePost from "./components/posts/CreatePost"
@@ -14,6 +15,9 @@ import ViewPost from './components/posts/ViewPost';
 import EditPost from './components/posts/EditPost';
 import AllUsers from './components/posts/AllUsers'
 import UserDetails from './components/posts/UserDetails'
+import FeatureNav from './components/layout/FeatureNav';
+import UserNav from './components/layout/UserNav'
+import Logout from './components/auth/Logout'
 
 
 
@@ -43,11 +47,38 @@ class App extends React.Component {
     const users = this.props.allUsers
     return (
       <div className="App container">
-        <Switch>
-        <Route exact path="/" component={Landing} />
+      <div className="row shadow-lg p-3 mb-5 bg-white rounded">
+          <LandingNav />
+          { currentUser.length > 0 ? 
+              <UserNav /> : <AuthNav />  }
+      </div>
+       
+      <div>
+      { currentUser.length > 0 ?
+      <div>
+        <Route exact path="/new" component={CreatePost} />
+        
+        </div>
+        : 
+        <div>
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/users" component={AllUsers} />
+        <Route exact path="/login" component={Login} /> 
+        </div>
+      }
+      
+      </div>
+
+      
+       
+        { currentUser.length > 0 ?
+        <div>
+          <Route exact path="/myposts" render={props => { return <AllPosts myposts={this.props.currentUser[0].posts} /> } } />
+        </div>
+          :
+          null
+        }
+
+  
         <Route exact path="/users/:id" render={props => {
              
              const user = users.find(element => element._id.toString() === props.match.params.id)
@@ -56,6 +87,8 @@ class App extends React.Component {
              return <UserDetails user={user} {...props}/>
            }
          }/>
+
+        
       
         <Route exact path='/posts/:id' render={props => {
              
@@ -73,21 +106,25 @@ class App extends React.Component {
              return <EditPost post={post} {...props}/>
            }
          }/>
-        </Switch>
+   
 
 
-        {/* <Route exact path="/posts/:id/edit" component={EditPost} />
-        <Route exact path="/posts/:id/delete" component={DeletePost} /> */}
-        { currentUser.length > 0 ? 
-            <div>
-                <Link to="/new">Create a new Post</Link> 
-                <Route exact path="/new" component={CreatePost} />
-            </div> 
-          : null }
-        
+       
+        {/* main body section */}
         <div>
         <hr></hr>
-          <AllPosts posts={this.props.allPosts} />
+          <div>
+            <div><Route exact path="/" component={FeatureNav} /></div>
+            <div>
+              
+              <Route exact path="/posts" render={props => { return <AllPosts posts={this.props.allPosts} /> } } />
+              {/* <AllPosts posts={this.props.allPosts} /> */}
+            </div>
+            
+            <div>
+              <Route exact path="/users" component={AllUsers} />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -102,7 +139,8 @@ const mapStateToProps = state => {
     
     currentUser: state.authReducer.user,
     allPosts: state.postReducer,
-    allUsers: state.userReducer
+    allUsers: state.userReducer,
+   
    
   })
 }
